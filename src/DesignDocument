@@ -1,0 +1,38 @@
+Design Document
+Classes
+LVM superclass
+String name
+String UUID
+
+HardDrive class subclass of LVM
+Int size(in gbs)
+
+PhysicalVolume class subclass of LVM
+HardDrive associatedHD
+
+VolumeGroup class subclass of LVM
+ArrayList<PhysicalVolume> listPV
+ArrayList<LogicalVolume> listLV
+Methods
+getSize() - add size of all PVs
+getFreeSpace() - subtract size of LVs from size of all PVs
+
+LogicalVolume class subclass of LVM
+Int size(in gbs)
+VolumeGroup associatedVG
+
+Command class
+Methods to
+- Install hard drives
+- List drives
+- Create physical volumes
+- List physical volumes
+- Create and extend volume groups
+- List volume groups
+- Create logical volumes
+- List logical volumes
+
+
+
+Runner class
+Use a Scanner to get input and put the input through the command class
