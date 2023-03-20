@@ -2,7 +2,7 @@ Design Document
 Classes
 LVM superclass
 String name
-String UUID
+UUID ID
 
 HardDrive class subclass of LVM
 Int size(in gbs)
@@ -24,14 +24,26 @@ VolumeGroup associatedVG
 Command class
 Methods to
 - Install hard drives
+    -report error if already installed(just same name)
 - List drives
 - Create physical volumes
+    -cannot use drive already with a physical volume
+    -cannot use existing name of another PV
+    -cannot use non-existing drive
+    -report error if these things
 - List physical volumes
-- Create and extend volume groups
+- Create volume groups
+    -report error if PV does not exist or is part of another VG
+    -report error is PV name exists already
+- extend volume groups
+    -report error if PV does not exist or is part of another VG
 - List volume groups
 - Create logical volumes
+    -report error if no space in volume group
+    -report error if VG name does not exist
+    -report error if VG name already exists
 - List logical volumes
-
+-exit
 
 
 Runner class
