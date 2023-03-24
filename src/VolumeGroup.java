@@ -25,4 +25,12 @@ public class VolumeGroup extends LVM {
         }
         return free;
     }
+    public void addPV(PhysicalVolume pv)
+    {
+        listPV.add(pv);
+    }
+    public void addLV(LogicalVolume lv)
+    {
+        listLV.add(lv);
+    }
 }

@@ -1,3 +1,4 @@
+import javax.sound.midi.SysexMessage;
 import java.util.Scanner;
 
 public class Runner {
@@ -17,10 +18,10 @@ public class Runner {
             //}
             if (splitInput[0].equals("install-drive"))
             {
-                System.out.println("working");
+                //System.out.println("working");
                 main.installDrive(splitInput[1],Integer.parseInt(splitInput[2].substring(0,splitInput[2].length()-1)));
             }
-            else if(splitInput[0].equals("List-drives"))
+            else if(splitInput[0].equals("list-drives"))
             {
                 main.listDrives();
             }
@@ -31,6 +32,14 @@ public class Runner {
             else if(splitInput[0].equals("pvlist"))
             {
                 main.listPVs();
+            }
+            else if(splitInput[0].equals("vgcreate"))
+            {
+                main.createVG(splitInput[1], splitInput[2]);
+            }
+            else if(splitInput[0].equals("vgextend"))
+            {
+                main.extendVG(splitInput[1], splitInput[2]);
             }
         }
     }
