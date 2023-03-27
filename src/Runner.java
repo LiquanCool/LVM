@@ -41,6 +41,10 @@ public class Runner {
             {
                 main.extendVG(splitInput[1], splitInput[2]);
             }
+            else if(splitInput[0].equals("vglist"))
+            {
+                main.listVGs();
+            }
         }
     }
 }

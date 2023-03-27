@@ -6,6 +6,8 @@ public class VolumeGroup extends LVM {
     public VolumeGroup(String n)
     {
         super(n);
+        listPV = new ArrayList<PhysicalVolume>();
+        listLV = new ArrayList<LogicalVolume>();
     }
     public int getSize()
     {
@@ -32,5 +34,15 @@ public class VolumeGroup extends LVM {
     public void addLV(LogicalVolume lv)
     {
         listLV.add(lv);
+    }
+    public String getPVs()
+    {
+        String ans = "";
+        for (int i = 0;i<listPV.size()-1;i++)
+        {
+            ans+=listPV.get(i).getName()+",";
+        }
+        ans+=listPV.get(listPV.size()-1).getName();
+        return ans;
     }
 }

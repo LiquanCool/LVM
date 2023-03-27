@@ -155,13 +155,21 @@ public class Command {
             }
             else
             {
-                System.out.println("Volume Group" + VGName+ "extended");
+                System.out.println("Volume Group " + VGName+ " extended");
                 v.addPV(p);//BUGGED
             }
         }
         else
         {
             System.out.println("Error, Physical Volume already associated with a Volume Group.");
+        }
+    }
+    public void listVGs()
+    {
+        for (int i = 0;i<VGList.size();i++)
+        {
+            VolumeGroup current = VGList.get(i);
+            System.out.println(current.getName()+": total:["+current.getSize()+"G] available:["+current.getFreeSpace()+"G] ["+current.getPVs()+"] ["+current.getID()+"]");
         }
     }
 }
