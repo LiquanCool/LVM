@@ -6,6 +6,7 @@ public class Command {
     private ArrayList<HardDrive> driveList = new ArrayList<HardDrive>();
     private ArrayList<PhysicalVolume> PVList = new ArrayList<PhysicalVolume>();
     private ArrayList<VolumeGroup> VGList = new ArrayList<VolumeGroup>();
+    private ArrayList<LogicalVolume> LVList = new ArrayList<LogicalVolume>();
     public Command()
     {
     }
@@ -171,5 +172,9 @@ public class Command {
             VolumeGroup current = VGList.get(i);
             System.out.println(current.getName()+": total:["+current.getSize()+"G] available:["+current.getFreeSpace()+"G] ["+current.getPVs()+"] ["+current.getID()+"]");
         }
+    }
+    public void createLV()
+    {
+
     }
 }
