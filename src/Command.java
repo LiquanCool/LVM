@@ -173,8 +173,53 @@ public class Command {
             System.out.println(current.getName()+": total:["+current.getSize()+"G] available:["+current.getFreeSpace()+"G] ["+current.getPVs()+"] ["+current.getID()+"]");
         }
     }
-    public void createLV()
+    public void createLV(String LVName, String size, String VGName)
     {
-
+        int intSize = Integer.parseInt(size.substring(0,size.length()-1));
+        VolumeGroup v = null;
+        VolumeGroup associatedVG = null;
+        boolean VGExists = false;
+        boolean LVExists = false;
+        for(int i = 0;i<VGList.size();i++)
+        {
+            if (VGList.get(i).getName().equals(VGName))
+            {
+                v = VGList.get(i);
+                VGExists = true;
+            }
+        }
+        for(int i = 0;i<LVList.size();i++)
+        {
+            if (LVList.get(i).getName().equals(LVName))
+            {
+                LVExists = true;
+            }
+        }
+        if (!VGExists)
+        {
+            System.out.println("The Volume Group does not exist!");
+        }
+        else if (LVExists)
+        {
+            System.out.println("This Logical Volume already exists!");
+        }
+        else if (intSize>v.getFreeSpace())
+        {
+            System.out.println("The Volume Group does not have enough free space!");
+        }
+        else
+        {
+            LogicalVolume lv = new LogicalVolume(LVName, v, intSize);
+            LVList.add(lv);
+            System.out.println(LVName + " created");
+        }
+    }
+    public void listLV()
+    {
+        for (int i = 0;i<LVList.size();i++)
+        {
+            LogicalVolume current = LVList.get(i);
+            System.out.println(current.getName()+": ["+current.getSize()+"G] ["+current.getAssociatedVG().getName()+"] ["+current.getID()+"]");
+        }
     }
 }

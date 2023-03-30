@@ -43,11 +43,11 @@ public class Runner {
             }
             else if(splitInput[0].equals("lvcreate"))
             {
-                main.
+                main.createLV(splitInput[1], splitInput[2], splitInput[3]);
             }
             else if(splitInput[0].equals("lvlist"))
             {
-
+                main.listLV();
             }
             else if(splitInput[0].equals("exit"))
             {
