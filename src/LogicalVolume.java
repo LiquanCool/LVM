@@ -1,4 +1,4 @@
-public class    LogicalVolume extends LVM{
+public class    LogicalVolume extends LVM{//e
     private VolumeGroup associatedVG;
     private int size;
 

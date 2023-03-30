@@ -157,7 +157,7 @@ public class Command {
             else
             {
                 System.out.println("Volume Group " + VGName+ " extended");
-                v.addPV(p);//BUGGED
+                v.addPV(p);//BUGGEDe
             }
         }
         else
