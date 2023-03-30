@@ -13,7 +13,7 @@ public class Runner {
             main = Command.useData(main);
         }
         System.out.println("Welcome to the LVM system");
-        while(!input.equals("exit"))
+        while(!input.equals("exit")&&!input.equals("reset"))
         {
             System.out.print("cmd#: ");
             input = n.nextLine();
