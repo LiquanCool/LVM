@@ -1,8 +1,9 @@
 import java.awt.*;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.random.RandomGenerator;
 
-public class Command {
+public class Command implements Serializable {
     private ArrayList<HardDrive> driveList = new ArrayList<HardDrive>();
     private ArrayList<PhysicalVolume> PVList = new ArrayList<PhysicalVolume>();
     private ArrayList<VolumeGroup> VGList = new ArrayList<VolumeGroup>();
@@ -115,8 +116,9 @@ public class Command {
         if (acceptable&&!repeat)
         {
             VolumeGroup v = new VolumeGroup(VGName);
-            VGList.add(v);
             pv.setAssociatedVG(v);
+            v.addPV(pv);
+            VGList.add(v);
             System.out.println(VGName+" created");
         }
     }
@@ -157,7 +159,7 @@ public class Command {
             else
             {
                 System.out.println("Volume Group " + VGName+ " extended");
-                v.addPV(p);//BUGGEDe
+                v.addPV(p);
             }
         }
         else
@@ -210,6 +212,7 @@ public class Command {
         else
         {
             LogicalVolume lv = new LogicalVolume(LVName, v, intSize);
+            v.addLV(lv);
             LVList.add(lv);
             System.out.println(LVName + " created");
         }
@@ -221,5 +224,19 @@ public class Command {
             LogicalVolume current = LVList.get(i);
             System.out.println(current.getName()+": ["+current.getSize()+"G] ["+current.getAssociatedVG().getName()+"] ["+current.getID()+"]");
         }
+    }
+    public static void save(Command com)throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Data.dat"));
+        oos.writeObject(com);
+        oos.close();
+        System.out.println("Saved Data.");
+    }
+
+    public static Command useData(Command com) throws IOException, ClassNotFoundException {
+        ObjectInputStream input = new ObjectInputStream(new FileInputStream("Data.dat"));
+        com = (Command) input.readObject();
+        input.close();
+        System.out.println("Data loaded.");
+        return com;
     }
 }

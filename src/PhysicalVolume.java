@@ -1,4 +1,6 @@
-public class PhysicalVolume extends LVM{
+import java.io.Serializable;
+
+public class PhysicalVolume extends LVM implements Serializable {
     private HardDrive associatedHD;
     private VolumeGroup associatedVG;
     public PhysicalVolume(String n, HardDrive a)

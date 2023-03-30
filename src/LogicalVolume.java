@@ -1,4 +1,6 @@
-public class    LogicalVolume extends LVM{//e
+import java.io.Serializable;
+
+public class    LogicalVolume extends LVM implements Serializable {
     private VolumeGroup associatedVG;
     private int size;
 

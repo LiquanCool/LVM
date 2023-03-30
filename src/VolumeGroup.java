@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 //e
-public class VolumeGroup extends LVM {
+public class VolumeGroup extends LVM implements Serializable {
     private ArrayList<PhysicalVolume> listPV;
     private ArrayList<LogicalVolume> listLV;
     public VolumeGroup(String n)
@@ -42,7 +43,10 @@ public class VolumeGroup extends LVM {
         {
             ans+=listPV.get(i).getName()+",";
         }
-        ans+=listPV.get(listPV.size()-1).getName();
+        if (listPV.size()>0)
+        {
+            ans+=listPV.get(listPV.size()-1).getName();
+        }
         return ans;
     }
 }

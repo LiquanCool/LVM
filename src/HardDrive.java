@@ -1,4 +1,6 @@
-public class HardDrive extends LVM{
+import java.io.Serializable;
+
+public class HardDrive extends LVM implements Serializable {
     private int size;
     public HardDrive(String n, int s)
     {

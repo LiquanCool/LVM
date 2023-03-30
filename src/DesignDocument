@@ -21,7 +21,10 @@ LogicalVolume class subclass of LVM
 Int size(in gbs)
 VolumeGroup associatedVG
 
+get methods for all the classes above
+
 Command class
+ArrayList variables for LV, VG, HD, and PV
 Methods to
 - Install hard drives
     -report error if already installed(just same name)
